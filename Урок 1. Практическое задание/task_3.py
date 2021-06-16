@@ -20,3 +20,43 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+
+companies = {
+    "ABC": 10000,
+    "BCD": 20000,
+    "CDE": 15000,
+    "DEF": 22000,
+    "ZZZ": 25000
+             }
+
+# Example 1
+
+# O(1) + O(n log n) + O(1) + O(1) = O(n log n)
+# Сложность: O(n log n) - Линейно-логарифмическая
+def first_algo(a):
+    top_three = []                                   # O(1)
+    for k in sorted(a, key=a.get, reverse=True):     # O(n log n)
+        top_three.append(k)                          # O(1)
+    return top_three[0:3]                            # O(1)
+    # return [k for k in sorted(a, key=a.get, reverse=True)][0:3] Версия в 1 строку
+print(first_algo(companies))
+
+# Example 2 поправить и сделать без сортировки
+
+# O(n) + (O(n) + O(1)) x (O(n) + O(1)) x O(1) + O(1) + O(1) + O(n) x O(1) + O(1) + O(1) = O(n ** 2)
+# Сложность: O(n ** 2) - Квадратичная
+def second_algo(a):
+    top = list(a.values())                          # O(n)
+    for i in range(len(top) - 1):                   # O(n) + O(1)
+        for v in range(i, len(top)):                # O(n) + O(1)
+            if top[i] < top[v]:                     # O(1)
+                top[i], top[v] = top[v], top[i]     # O(1)
+    top_three = []                                  # O(1)
+    for i, v in a.items():                          # O(n)
+        if v in top[0:3]:                           # O(1)
+            top_three.append(i)                     # O(1)
+    return top_three                                # O(1)
+
+
+print(second_algo(companies))
+# Первое решение лучше, так как линейно-логарифмическая функция менее затратна чем квадратичная
