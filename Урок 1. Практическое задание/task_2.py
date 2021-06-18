@@ -18,3 +18,32 @@
 
 ф-ции min() и sort() не исп-ем!
 """
+
+
+# 1 Сложность такого алгоритма: O(n^2) - квадратичная.
+
+# O(1) + O(n) x O(n) x O(1) + O(1) + O(1) = O(n ** 2)
+def search_min_in_list(a):
+    m = a[0]                       # O(1)
+    for i in a:                    # O(n)
+        for j in a:                # O(n)
+            if j >= i and i < m:   # O(1)
+                m = i              # O(1)
+    return m                       # O(1)
+
+
+print(search_min_in_list([1, 2, 5, 3, 8]))
+
+
+# 2 Сложность такого алгоритма: O(n) - линейная.
+
+# O(1) + O(n) x O(1) + O(1) + O(1) = O(n)
+def search_min_in_list_second(a):
+    m = a[0]          # O(1)
+    for i in a:       # O(n)
+        if m > i:     # O(1)
+            m = i     # O(1)
+    return m          # O(1)
+
+
+print(search_min_in_list_second([1, 2, 5, 3, 8]))

@@ -28,3 +28,76 @@
 
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+
+# Вариант решения
+
+class StackClass:
+    def __init__(self):
+        self.elems = []
+
+    def is_empty(self):
+        return self.elems == []
+
+    def push_in(self, el):
+        if len(self.elems) == 0:
+            self.elems.append([])
+        if len(self.elems[-1]) < 5:
+            self.elems[-1].append(el)
+        else:
+            self.elems.append([])
+            self.elems[-1].append(el)
+
+    def pop_out(self):
+        if len(self.elems) == 0:
+            return self.elems == []
+        if len(self.elems[-1]) > 1:
+            return self.elems[-1].pop()
+        else:
+            pop_el = self.elems[-1].pop()
+            self.elems.pop()
+            print(self.elems)
+            return pop_el
+
+    def get_val(self):
+        if len(self.elems) == 0:
+            return "Нет тарелок"
+        return self.elems[-1][-1]
+
+    def stack_size(self):
+        if len(self.elems) > 1:
+            return 5 * (len(self.elems) - 1) + len(self.elems[-1])
+        return len(self.elems[-1])
+
+
+if __name__ == '__main__':
+
+    SC_OBJ = StackClass()
+
+    print(SC_OBJ.is_empty())  # -> стек пустой
+
+    # наполняем стопки
+    SC_OBJ.push_in(10)
+    SC_OBJ.push_in('code')
+    SC_OBJ.push_in(False)
+    SC_OBJ.push_in(5.5)
+    SC_OBJ.push_in(10)
+
+    SC_OBJ.push_in('code')
+
+    # Удаляем елементы из стопок
+    SC_OBJ.pop_out()
+    SC_OBJ.pop_out()
+    print(SC_OBJ.elems)
+
+    # Повторно наполняем стопки
+    SC_OBJ.push_in(False)
+    SC_OBJ.push_in(5.5)
+    SC_OBJ.push_in(10)
+
+    # получаем значение первого элемента с вершины стопки, но не удаляем сам элемент из стека
+    print(SC_OBJ.get_val())
+
+    # узнаем размер стопок
+    print(SC_OBJ.stack_size())
+
+
