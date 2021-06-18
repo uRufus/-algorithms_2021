@@ -77,4 +77,25 @@ def check_account_second_version(login, password):
 print(check_account_second_version("CDE", 10000))
 print(check_account_second_version("ZBD", 10000))
 print(users)
+
+# 3 Вариант
+# Сложность: O(1) - константная
+def check_account_third_version(login, password):
+    if users.get(login):
+        if users[login][0] == password:
+            if users[login][1] == 1:
+                return "Добро пожаловать на ресурс"
+            else:
+                return "Ваша учетная запись деактивирована"
+        else:
+            return "Неправильный пароль"
+    answer = input("Хотите пройти аутентификацию в системе?(д)а или (н)ет?")
+    if answer == "д":
+        users[login] = [password, True]
+        return "Добро пожаловать на ресурс"
+
+
+print(check_account_third_version("CDE", 10000))
+print(check_account_third_version("ZBD", 10000))
+print(users)
 # Первое решение лучше, так как линейная функция менее затратна чем линейно-логарифмическая
