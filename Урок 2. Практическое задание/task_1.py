@@ -28,3 +28,50 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+def check_float(a):
+    try:
+        float(a)
+        return True
+    except:
+        print("Введено не число!!")
+
+def calculator(var = 0):
+    while True:
+        l = input("Введите операцию (+, -, *, / или 0 для выхода): ")
+        if l in "+-*/0":
+            break
+        print("Вы ввели неправильную операцию")
+    if l == "0":
+        return l
+    if var == 0:
+        while True:
+            f = input("Введите первое число: ")
+            if check_float(f) is True:
+                f = float(f)
+                break
+    else:
+        f = var
+    while True:
+        s = (input("Введите второе число: "))
+        if check_float(s):
+            s = float(s)
+            break
+    if l == "+":
+        f += s
+    elif l == "-":
+        f -= s
+    elif l == "*":
+        f *= s
+    elif l == "/":
+        while s == 0:
+            print("На ноль делить нельзя!!")
+            while True:
+                s = (input("Введите второе число: "))
+                if check_float(s) is True:
+                    s = float(s)
+                    break
+        f /= s
+    print(f"Ваш результат: {f}")
+    return calculator(f)
+
+calculator()

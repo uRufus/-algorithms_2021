@@ -22,3 +22,10 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+def numbers(num):
+    return num if len(num) < 2 else str(int(num) % 10) + numbers(str(int(num) // 10))
+
+print(numbers("123"))
+print(numbers("1230"))
+print(numbers("10203040506070"))
