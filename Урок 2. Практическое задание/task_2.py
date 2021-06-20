@@ -18,3 +18,28 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+# Вариант 1
+def numbers_two(num, x = 0, y = 0):
+    if num < 1:
+        return x, y
+    if num % 2 == 0:
+        x += 1
+    else:
+        y += 1
+    return numbers_two((num) // 10, x, y)
+
+print(numbers_two(23445551234))
+
+
+# Вариант 2
+def numbers(num, x = [0, 0]):
+    if len(str(num)) < 1:
+        return x
+    if int(str(num)[-1]) % 2 == 0:
+        x[0] += 1
+    else:
+        x[1] += 1
+    return numbers(str(num)[:-1])
+
+print(numbers(23445551234))
+
