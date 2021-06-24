@@ -18,3 +18,24 @@
 Обязательно усложните задачу! Добавьте сохранение хеша в файле и получение его из файла.
 А если вы знаете как через Python работать с БД, привяжите к заданию БД и сохраняйте хеши там.
 """
+"""Хеширование и соль"""
+
+
+
+import hashlib
+
+salt = "80740ba2a1584aa7bf96d32bbe774e54"
+def check_password(n):
+    n = str(n)
+    with open("task2.txt", 'r+', encoding='utf-8') as file:
+        res = hashlib.sha256(salt.encode() + n.encode()).hexdigest()
+        for i in file.readlines():
+            if i == (res + "\n"):
+                print("Правильный пароль")
+                return
+        a = int(input("Пароля нет в системе. Хотите сохранить пароль? Если да, то введите 1 "))
+        if a == 1:
+            file.write(res + "\n")
+
+
+check_password(input("Введите пароль: "))
