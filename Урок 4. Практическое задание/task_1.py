@@ -20,7 +20,7 @@ def func_1(nums):
         if nums[i] % 2 == 0:
             new_arr.append(i)
     return new_arr
-# O(1)
+# O(n)
 def func_2(nums):
     return [i for i, v in enumerate(nums) if v % 2 == 0]
 
@@ -28,4 +28,4 @@ l = [i for i in range(10)]
 print(timeit.timeit("func_1(l)", globals=globals()))
 print(timeit.timeit("func_2(l)", globals=globals()))
 
-# func_2 выполняется быстрее из-за константной сложности в то время когда у func_1 линейная сложность
+# func_2 выполняется быстрее из-за того, что не пишем отдельные строчки кода для создания спискка.

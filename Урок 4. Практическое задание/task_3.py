@@ -16,7 +16,8 @@
 import timeit
 from cProfile import run
 
-#О(log n)
+
+# О(log n)
 def revers_1(enter_num, revers_num=0):
     if enter_num == 0:
         return revers_num
@@ -26,6 +27,7 @@ def revers_1(enter_num, revers_num=0):
         enter_num //= 10
         return revers_1(enter_num, revers_num)
 
+
 # O(n)
 def revers_2(enter_num, revers_num=0):
     while enter_num != 0:
@@ -34,28 +36,30 @@ def revers_2(enter_num, revers_num=0):
         enter_num //= 10
     return revers_num
 
+
 # O(1)
 def revers_3(enter_num):
     enter_num = str(enter_num)
     revers_num = enter_num[::-1]
     return revers_num
 
-#O(n)
+
+# O(n)
 def revers_4(enter_num):
     p = ""
     for i in str(enter_num):
-            p = i + p
+        p = i + p
     return p
-
-
 
 
 def num(n):
     l = ""
     for i in range(1, n):
-            l += str(i)
+        l += str(i)
     l = int(l)
     return l
+
+
 l = num(360)
 k = num(20)
 run('revers_1(l)')

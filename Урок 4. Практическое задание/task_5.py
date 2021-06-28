@@ -44,7 +44,7 @@ i = int(input('Введите порядковый номер искомого �
 print(simple(i))
 
 
-# O(n ** 3)
+# O(n log n)
 def complex(k):
     n = k * 10
     x = [i for i in range(2, n + 1)]

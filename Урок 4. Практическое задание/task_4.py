@@ -57,6 +57,5 @@ print(timeit.timeit("func_1()", globals=globals(), number=1000000))
 print(timeit.timeit("func_2()", globals=globals(), number=1000000))
 print(timeit.timeit("func_3()", globals=globals(), number=1000000))
 '''
-Получилось ускорить задачу, так как func_3 имеет константную сложность 
-в то время как остальные имеют линейную сложность.
+Получилось ускорить задачу, так как func_3 делает выборку только по уникальным значениям в списке
 '''
