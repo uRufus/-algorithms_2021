@@ -13,7 +13,7 @@
 
 from timeit import timeit
 from random import randint
-
+from cProfile import run
 
 def recursive_reverse(number):
     if number == 0:
@@ -24,7 +24,7 @@ def recursive_reverse(number):
 num_100 = randint(10000, 1000000)
 num_1000 = randint(1000000, 10000000)
 num_10000 = randint(100000000, 10000000000000)
-
+num_100000= randint(1000000000000, 100000000000000000)
 print('Не оптимизированная функция recursive_reverse')
 print(
     timeit(
@@ -45,9 +45,7 @@ print(
 
 def memoize(f):
     cache = {}
-
     def decorate(*args):
-
         if args in cache:
             return cache[args]
         else:
@@ -79,3 +77,7 @@ print(
         'recursive_reverse_mem(num_10000)',
         setup='from __main__ import recursive_reverse_mem, num_10000',
         number=10000))
+'''
+Меморизация не нужна, так как сохраняются уникальные значения. Возможно функция
+показывает большую скорость из-за того что считается время за вычитом времени работы декоратора?
+'''
