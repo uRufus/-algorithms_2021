@@ -34,3 +34,28 @@ hx = HexNumber
 hx + hx
 hex()
 """
+
+from collections import defaultdict
+
+
+def list_converter(number):
+    needed_list = []
+    for i in number:
+        needed_list.append(i)
+    return needed_list
+
+
+def sum_and_mul_hex():
+    result = defaultdict(list)
+    for c in range(1, 3):
+        number = (input(f"Введите {c} число: "))
+        list_converter(number)
+        result[c] = list_converter(number)
+    summary = hex(int(''.join(result[1]), 16) + int(''.join(result[2]), 16))
+    result["sum"] = list_converter(summary[2:].upper())
+    multiply = hex(int(''.join(result[1]), 16) * int(''.join(result[2]), 16))
+    result["multiply"] = list_converter(multiply[2:].upper())
+    return f"Сумма чисел: {result['sum']}", f"Произведение чисел: {result['multiply']}"
+
+
+print(sum_and_mul_hex())
