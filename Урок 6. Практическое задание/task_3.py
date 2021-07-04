@@ -5,3 +5,20 @@
 Придумать как это решить!
 Есть очень простое решение
 """
+from memory_profiler import profile
+
+
+@profile
+def num_profile(k):
+    return numbers(k)
+
+
+def numbers(num, x=1):
+    return x if num < 2 else numbers(num - 1, - (x / 2))
+
+
+print(num_profile(int(input("Число: "))))
+
+'''
+Профилировать можно, для этого нужно вызывать функцию рекурсии из профилируемой функции.
+'''
