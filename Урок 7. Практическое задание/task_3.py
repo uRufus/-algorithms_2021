@@ -36,3 +36,34 @@ for i in
 
 
 """
+
+import random
+from statistics import median
+
+
+def new_list(m):
+    return [random.randint(1, 100) for i in range(2 * m + 1)]
+
+
+m = 50
+my_list = new_list(m)
+
+
+# Вариант через модуль statistics
+print(median(my_list))
+
+
+# Вариант сортировки Шелла
+def shell(data):
+    inc = m
+    while inc:
+        for i, el in enumerate(data):
+            while i >= inc and data[i - inc] > el:
+                data[i] = data[i - inc]
+                i -= inc
+            data[i] = el
+        inc = 1 if inc == 2 else int(inc * 5.0 / 11)
+    return data[m]
+
+
+print(shell(my_list))
