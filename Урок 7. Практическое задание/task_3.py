@@ -41,8 +41,8 @@ import random
 from statistics import median
 
 
-def new_list(m):
-    return [random.randint(1, 100) for i in range(2 * m + 1)]
+def new_list(med):
+    return [random.randint(1, 100) for i in range(2 * med + 1)]
 
 
 m = 50
@@ -54,8 +54,8 @@ print(median(my_list))
 
 
 # Вариант сортировки Шелла
-def shell(data):
-    inc = m
+def shell(data, med):
+    inc = med
     while inc:
         for i, el in enumerate(data):
             while i >= inc and data[i - inc] > el:
@@ -63,7 +63,7 @@ def shell(data):
                 i -= inc
             data[i] = el
         inc = 1 if inc == 2 else int(inc * 5.0 / 11)
-    return data[m]
+    return data[med]
 
 
-print(shell(my_list))
+print(shell(my_list, m))
